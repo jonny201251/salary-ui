@@ -45,7 +45,7 @@ class SalNpForm extends PureComponent {
 
     params = {...this.props.params}
 
-    componentWillMount() {
+     componentWillMount() {
         //预加载数据
         ajax.get_callback(urls.dic.flagData, {flag: '计税类别'}, (category) => {
             this.setState({'jishuiOptions': category})
@@ -62,7 +62,7 @@ class SalNpForm extends PureComponent {
         } else {
             //获取页面数据
             const salNpId = this.params.selectedItem.id
-            ajax.get_callback(urls.salNp.editView, {salNpId}, (realData) => {
+             ajax.get_callback(urls.salNp.editView, {salNpId}, (realData) => {
                 if (this.params.type === DETAIL || this.params.selectedItem.finish === yes_finish) this.core.setGlobalStatus('preview')
                 //日期
                 let yearmonthString = realData.yearmonthString
@@ -75,7 +75,7 @@ class SalNpForm extends PureComponent {
     }
 
     onSearch = (value) => {
-        ajax.get_callback(urls.user.get, {nameOrNum: value, type: window.location.pathname}, (realData) => {
+        ajax.get_callback(urls.user.get, {nameOrNum: value, type: window.location.pathname.replace(Constants.projectName,"")}, (realData) => {
             //日期
             let yearmonthString = realData.yearmonthString
             delete realData.yearmonthString

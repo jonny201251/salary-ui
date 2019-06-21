@@ -67,7 +67,7 @@ class SalLx extends PureComponent {
         this.setState({uploading: true})
         formData.append("type", this.state.type)
         formData.append("comment", this.state.comment === undefined ? "" : this.state.comment)
-        formData.append("path", window.location.pathname)
+        formData.append("path", window.location.pathname.replace(Constants.projectName,""))
         axios.post(Constants.baseURL+"/uploadFiles/upload", formData).then((res) => {
             this.setState({fileList: [], uploading: false, visible: false})
             if (res.data.flag) {

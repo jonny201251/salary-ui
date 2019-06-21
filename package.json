@@ -40,5 +40,5 @@
     "babel-plugin-import": "^1.11.0",
     "react-app-rewired": "^1.6.2"
   },
-  "proxy": "http://127.0.0.1/salary"
+  "proxy": "http://127.0.0.1:8080/salary"
 }

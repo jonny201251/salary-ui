@@ -63,7 +63,7 @@ class SalLxForm extends PureComponent {
     }
 
     onSearch = (value) => {
-        ajax.get_callback(urls.user.get, {nameOrNum: value, type: window.location.pathname}, (realData) => {
+        ajax.get_callback(urls.user.get, {nameOrNum: value, type: window.location.pathname.replace(Constants.projectName,"")}, (realData) => {
             //日期
             let yearmonthString = realData.yearmonthString
             delete realData.yearmonthString

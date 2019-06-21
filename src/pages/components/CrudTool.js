@@ -81,7 +81,7 @@ class CrudTool extends PureComponent {
             })
         } else if (FINISH === type) {
             const thiz = this
-            const pathname = window.location.pathname
+            const pathname = window.location.pathname.replace(Constants.projectName,"")
             ajax.get_callback("/salNp/finishTip", {pathname}, (realData) => {
 /*                Modal.confirm({
                     title: '提示',
@@ -159,10 +159,10 @@ class CrudTool extends PureComponent {
                 return <Button icon="file" type="primary" onClick={this.props.showModal}>批量修改</Button>
             } else if (item === '导出报税数据') {
                 return <Button icon="export" type="primary" style={{marginRight: 10}}
-                               href={Constants.baseURL + window.location.pathname + "File/writeUpTaxExcel"}>导出报税数据</Button>
+                               href={Constants.baseURL + window.location.pathname.replace(Constants.projectName,"") + "File/writeUpTaxExcel"}>导出报税数据</Button>
             } else if (item === '导出工行数据') {
                 return <Button icon="export" type="primary" style={{marginRight: 10}}
-                               href={Constants.baseURL + window.location.pathname + "File/writeExcel"}>导出工行数据</Button>
+                               href={Constants.baseURL + window.location.pathname.replace(Constants.projectName,"") + "File/writeExcel"}>导出工行数据</Button>
             } else if (item === '月结') {
                 return <Button icon="lock" type="primary" onClick={() => this.handleOperator2(FINISH)}>月结</Button>
             }

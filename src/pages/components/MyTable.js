@@ -13,7 +13,7 @@ const MyTable = (props) => {
                 props.setSelectedItem([record.id], record)
             },
             onDoubleClick: () => {
-                let pathname = window.location.pathname
+                let pathname = window.location.pathname.replace(Constants.projectName,"")
                 if (pathname === '/changeSheetNeedHandle') return
                 const info = props.info
                 //对话框需要的参数
