@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
-import {message} from 'antd'
-import {Dialog, Button, Modal} from 'nowrapper/lib/antd'
+import {message, Modal, Spin} from 'antd'
+import {Dialog, Button} from 'nowrapper/lib/antd'
 import {ajax, Constants, urls, PermissionButton} from '../../util'
 
 const {CREATE, EDIT, DETAIL, RECOMBINE, BINDUSER, AUTHORIZE, FINISH} = Constants
@@ -81,26 +81,28 @@ class CrudTool extends PureComponent {
             })
         } else if (FINISH === type) {
             const thiz = this
-            const pathname = window.location.pathname.replace(Constants.projectName,"")
+            const pathname = window.location.pathname.replace(Constants.projectName, "")
             ajax.get_callback("/salNp/finishTip", {pathname}, (realData) => {
-/*                Modal.confirm({
-                    title: '提示',
-                    content: '月结--'+realData.year+'年' + realData.month + '月--的工资数据吗?',
-                    onOk() {
-                        ajax.post(pathname + "/finish", {}, thiz.props.callback)
-                    }
-                })*/
                 Dialog.show({
                     locale: 'zh',
                     width: 400,
                     title: '提示',
                     content: `月结--${realData.year}年${realData.month}月--的工资数据吗?`,
                     onOk: (values, hide) => {
-                        ajax.post(pathname + "/finish", {}, thiz.props.callback, Constants.TIP_TYPE_MODAL)
                         hide()
+                        const modal = Modal.info({
+                            title: '提示',
+                            content: <div><Spin/>正在操作中...</div>,
+                            okButtonProps: {disabled: true}
+                        })
+                        ajax.get_callback(pathname + "/finish", {}, (realData) => {
+                            thiz.props.callback()
+                            modal.update({content: '操作成功', okButtonProps: {disabled: false}})
+                        }, Constants.TIP_TYPE_MODAL)
+                        // ajax.post(pathname + "/finish", {}, thiz.props.callback, Constants.TIP_TYPE_MODAL)
                     }
                 })
-            })
+            }, Constants.TIP_TYPE_MODAL)
         }
     }
     handleOperator = (type) => {
@@ -159,10 +161,10 @@ class CrudTool extends PureComponent {
                 return <Button icon="file" type="primary" onClick={this.props.showModal}>批量修改</Button>
             } else if (item === '导出报税数据') {
                 return <Button icon="export" type="primary" style={{marginRight: 10}}
-                               href={Constants.baseURL + window.location.pathname.replace(Constants.projectName,"") + "File/writeUpTaxExcel"}>导出报税数据</Button>
+                               href={Constants.baseURL + window.location.pathname.replace(Constants.projectName, "") + "File/writeUpTaxExcel"}>导出报税数据</Button>
             } else if (item === '导出工行数据') {
                 return <Button icon="export" type="primary" style={{marginRight: 10}}
-                               href={Constants.baseURL + window.location.pathname.replace(Constants.projectName,"") + "File/writeExcel"}>导出工行数据</Button>
+                               href={Constants.baseURL + window.location.pathname.replace(Constants.projectName, "") + "File/writeExcel"}>导出工行数据</Button>
             } else if (item === '月结') {
                 return <Button icon="lock" type="primary" onClick={() => this.handleOperator2(FINISH)}>月结</Button>
             }

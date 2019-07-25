@@ -4,7 +4,7 @@ import Form, {FormItem, FormCore} from 'noform'
 import {Input, Select, TreeSelect} from 'nowrapper/lib/antd'
 import {Constants, Functions, validate, urls, ajax} from '../../util'
 
-const {CREATE, DETAIL, status_normal} = Constants
+const {CREATE, DETAIL, status_normal, form_status_disabled} = Constants
 
 //layout
 let {ColProps, FormItemProps} = Functions.getFormLayoutProps(2)
@@ -14,7 +14,7 @@ class UserForm extends PureComponent {
     state = {
         categoryOptions: [],
         deptTreeData: [],
-        giveModeOptions:[{label: "站发", value: "站发"},{label: "院发", value: "院发"}]
+        giveModeOptions: [{label: "站发", value: "站发"}, {label: "院发", value: "院发"}]
     }
 
     constructor(props) {
@@ -44,11 +44,13 @@ class UserForm extends PureComponent {
             this.core.reset()
             this.core.setValues({
                 org: '航天海鹰安全',
-                job:'在职',
+                job: '在职',
                 stauts: status_normal,
                 sort: 0
             })
+            this.core.setStatus({'pwd': form_status_disabled})
         } else {
+            this.core.setStatus({'pwd': form_status_disabled})
             this.core.setValues({...this.params.selectedItem})
             if (this.params.type === DETAIL) this.core.setGlobalStatus('preview')
         }
@@ -116,7 +118,7 @@ class UserForm extends PureComponent {
                             style={{width: 250}}/></FormItem>
                     </Col>
                 </Row>
-{/*                <Row gutter={8} className="marginTop">
+                {/*                <Row gutter={8} className="marginTop">
                     <Col {...ColProps}>
                         <FormItem label="在职状态" name="job" {...FormItemProps}><Select
                             options={this.state.jobOptions}

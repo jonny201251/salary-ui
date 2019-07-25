@@ -135,7 +135,7 @@ class ChangeSheetNeedHandleForm extends PureComponent {
                     </SelectInlineRepeater>
                 </FormItem>
                 <Button icon="scan" type="primary" style={{marginLeft:45}}
-                        href={Constants.baseURL  + "/File/otherBonus"}>查看明细数据</Button>
+                        href={Constants.baseURL  + "/changeSheetFile/otherBonus"}>查看明细数据</Button>
             </Card>
             <Card title='备注' className='marginTop' headStyle={fontWeight}>
                 <FormItem name="comment"><Input.TextArea style={{width: 350}}/></FormItem>

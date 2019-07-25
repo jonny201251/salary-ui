@@ -13,7 +13,6 @@ const validate = {
     },
     user: {
         name: {type: "string", required: true, message: '[姓名]' + suffixMsg},
-        pwd: {type: "string", required: true, message: '[密码]' + suffixMsg},
         num: {type: "string", required: true, message: '[职工编号]' + suffixMsg},
         category: {type: "string", required: true, message: '[职工类别]' + suffixMsg},
         bankAccount: {type: "string", required: true, message: '[银行账号]' + suffixMsg},

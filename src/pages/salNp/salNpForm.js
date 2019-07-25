@@ -9,7 +9,7 @@ import 'moment/locale/zh-cn'
 import {ajax, Constants, Functions, urls, validate} from '../../util'
 
 const {MonthPicker} = DatePicker
-const {CREATE, DETAIL, monthFormat, yes_finish, no_finish, form_status_disabled,form_status_preview, fontWeight} = Constants
+const {CREATE, DETAIL, monthFormat, yes_finish, no_finish, form_status_disabled, form_status_preview, fontWeight} = Constants
 
 let threeCol = Functions.getFormLayoutProps(3)
 let fourCol = Functions.getFormLayoutProps(4)
@@ -45,7 +45,7 @@ class SalNpForm extends PureComponent {
 
     params = {...this.props.params}
 
-     componentWillMount() {
+    componentWillMount() {
         //预加载数据
         ajax.get_callback(urls.dic.flagData, {flag: '计税类别'}, (category) => {
             this.setState({'jishuiOptions': category})
@@ -62,7 +62,7 @@ class SalNpForm extends PureComponent {
         } else {
             //获取页面数据
             const salNpId = this.params.selectedItem.id
-             ajax.get_callback(urls.salNp.editView, {salNpId}, (realData) => {
+            ajax.get_callback(urls.salNp.editView, {salNpId}, (realData) => {
                 if (this.params.type === DETAIL || this.params.selectedItem.finish === yes_finish) this.core.setGlobalStatus('preview')
                 //日期
                 let yearmonthString = realData.yearmonthString
@@ -75,7 +75,10 @@ class SalNpForm extends PureComponent {
     }
 
     onSearch = (value) => {
-        ajax.get_callback(urls.user.get, {nameOrNum: value, type: window.location.pathname.replace(Constants.projectName,"")}, (realData) => {
+        ajax.get_callback(urls.user.get, {
+            nameOrNum: value,
+            type: window.location.pathname.replace(Constants.projectName, "")
+        }, (realData) => {
             //日期
             let yearmonthString = realData.yearmonthString
             delete realData.yearmonthString
@@ -244,7 +247,7 @@ class SalNpForm extends PureComponent {
             <Card title='计税专用-减项' className='marginTop' headStyle={fontWeight}>
                 <FormItem name="jishui_subtract_repeater">
                     <SelectInlineRepeater locale='zh' selectMode="multiple" multiple>
-                        <FormItem label='名称' name="name"><Input style={{width:200}}/></FormItem>
+                        <FormItem label='名称' name="name"><Input style={{width: 200}}/></FormItem>
                         <FormItem label='金额' name="money"  {...repeaterProps_100} ><Input/></FormItem>
                     </SelectInlineRepeater>
                 </FormItem>
