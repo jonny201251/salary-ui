@@ -130,6 +130,9 @@ class SalLtxForm extends PureComponent {
                         <FormItem label="1617增资" name="zengzi" {...fourCol.FormItemProps}><Input/></FormItem>
                     </Col>
                     <Col {...fourCol.ColProps}>
+                        <FormItem label="物业补贴" name="wuye" {...fourCol.FormItemProps}><Input/></FormItem>
+                    </Col>
+                    <Col {...fourCol.ColProps}>
                         <FormItem label="其他" name="yingfaqita" {...fourCol.FormItemProps}><Input/></FormItem>
                     </Col>
                 </Row>

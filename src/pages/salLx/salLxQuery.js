@@ -21,8 +21,8 @@ class SalLxQuery extends PureComponent {
         //日期
         let yearmonth = []
         let date = new Date()
-        yearmonth.push(moment(date.getFullYear() + '年' + (date.getMonth() + 1) + '月', monthFormat))
-        yearmonth.push(moment(date.getFullYear() + '年' + (date.getMonth() + 1) + '月', monthFormat))
+        yearmonth.push(moment(sessionStorage.getItem('salLxYearMonth'), monthFormat))
+        yearmonth.push(moment(sessionStorage.getItem('salLxYearMonth'), monthFormat))
         this.core.setValue("yearmonth", yearmonth)
     }
 

@@ -55,5 +55,9 @@ export default {
     PERMISSIONS: 'permissions',
     //提示类型，message/modal
     TIP_TYPE_MESSAGE:'message',
-    TIP_TYPE_MODAL:'modal'
+    TIP_TYPE_MODAL:'modal',
+    //查询、重置、导出
+    QUERY:'query',
+    RESET:'reset',
+    EXPORT:'export'
 }

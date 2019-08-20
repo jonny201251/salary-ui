@@ -141,6 +141,9 @@ class SalLxForm extends PureComponent {
                 </Row>
                 <Row gutter={8} className='marginTop'>
                     <Col {...fourCol.ColProps}>
+                        <FormItem label="物业补贴" name="wuye" {...fourCol.FormItemProps}><Input/></FormItem>
+                    </Col>
+                    <Col {...fourCol.ColProps}>
                         <FormItem label="其他" name="yingfaqita" {...fourCol.FormItemProps}><Input/></FormItem>
                     </Col>
                 </Row>

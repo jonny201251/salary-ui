@@ -41,6 +41,10 @@ class Login extends PureComponent {
             //保存用户id
             sessionStorage.setItem("userId", realData.userId + "")
             sessionStorage.setItem("userName", realData.userName)
+            //内聘、退休、离休的年月
+            sessionStorage.setItem("salNpYearMonth", realData.salNpYearMonth)
+            sessionStorage.setItem("salLtxYearMonth", realData.salLtxYearMonth)
+            sessionStorage.setItem("salLxYearMonth", realData.salLxYearMonth)
             //保存权限按钮
             PermissionButton.store(realData.buttons)
             window.location.href = Constants.projectName + '/salNp'

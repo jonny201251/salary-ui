@@ -14,7 +14,12 @@ import Test from './pages/Test'
 import Permission from './pages/permission'
 import Role from './pages/role'
 import Login from './pages/login'
-import UserSalNp from './pages/report/userSalNp'
+import SalNpReport from './pages/report/salNpReport'
+import SalNpSumReport from './pages/report/salNpSumReport'
+import SalLtxReport from './pages/report/salLtxReport'
+import SalLtxSumReport from './pages/report/salLtxSumReport'
+import SalLxReport from './pages/report/salLxReport'
+import SalLxSumReport from './pages/report/salLxSumReport'
 import {Constants} from './util'
 //antd、noform和nowrapper的样式
 import 'antd/dist/antd.less'
@@ -44,7 +49,12 @@ class Router extends PureComponent {
                                     <Route path={Constants.projectName+'/permission'} component={Permission}/>
                                     <Route path={Constants.projectName+'/role'} component={Role}/>
                                     <Route path={Constants.projectName+'/main'} component={Test}/>
-                                    <Route path={Constants.projectName+'/userSalNp'} component={UserSalNp}/>
+                                    <Route path={Constants.projectName+'/salNpReport'} component={SalNpReport}/>
+                                    <Route path={Constants.projectName+'/salNpSumReport'} component={SalNpSumReport}/>
+                                    <Route path={Constants.projectName+'/salLtxReport'} component={SalLtxReport}/>
+                                    <Route path={Constants.projectName+'/salLtxSumReport'} component={SalLtxSumReport}/>
+                                    <Route path={Constants.projectName+'/salLxReport'} component={SalLxReport}/>
+                                    <Route path={Constants.projectName+'/salLxSumReport'} component={SalLxSumReport}/>
                                     }/>
                                 </Switch>
                             </Admin>

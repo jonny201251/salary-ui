@@ -14,7 +14,7 @@ class Admin extends PureComponent {
         menus: []
     }
 
-    rootSubmenuKeys = ['2', '15']
+    rootSubmenuKeys = ['2', '15','65']
 
     componentWillMount() {
         let userId = sessionStorage.getItem("userId")

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table} from 'antd'
+import {message, Table} from 'antd'
 import {Dialog} from 'nowrapper/lib/antd'
 import {ajax, Constants} from '../../util'
 
@@ -13,6 +13,10 @@ const MyTable = (props) => {
                 props.setSelectedItem([record.id], record)
             },
             onDoubleClick: () => {
+                if(record.processStatus==='已完成审批'){
+                    message.warning("该变动单已完成审批，不能编辑了！")
+                    return
+                }
                 let pathname = window.location.pathname.replace(Constants.projectName,"")
                 if (pathname === '/changeSheetNeedHandle') return
                 const info = props.info

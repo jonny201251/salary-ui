@@ -126,6 +126,10 @@ class ChangeSheet extends PureComponent {
     }
     //编辑、详情
     handleOperator3 = (type) => {
+        if (EDIT === type && this.state.selectedItem.processStatus === '已完成审批') {
+            message.warning("该变动单已完成审批，不能编辑了！")
+            return
+        }
         if (!this.state.selectedItem) {
             message.error("请选择一个变动单")
             return

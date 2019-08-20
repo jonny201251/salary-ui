@@ -10,7 +10,7 @@ import {ajax, Constants, Functions, urls} from '../../util'
 import batchModifyColumn from "./batchModifyColumn"
 
 const {MonthPicker} = DatePicker
-const {GENERATE, AUDITING, DETAIL, monthFormat, fontWeight} = Constants
+const {GENERATE, AUDITING,EDIT, DETAIL, monthFormat, fontWeight} = Constants
 
 let threeCol = Functions.getFormLayoutProps(3)
 let repeaterProps_100 = Functions.getReaterProps()
@@ -31,17 +31,24 @@ class ChangeSheetNeedHandleForm extends PureComponent {
     params = {...this.props.params}
 
     componentWillMount() {
+        //获取batchModifyData
+        ajax.get_callback(urls.changeSheetNeedHandle.batchModifyData, {}, (realData) => {
+            this.setState({batchModifyData: realData})
+        })
         if (this.params.type === GENERATE) {
             //日期
-/*            let date = new Date()
-            let pageDate = date.getFullYear() + '年' + (date.getMonth() + 2) + '月'*/
+            /*            let date = new Date()
+                        let pageDate = date.getFullYear() + '年' + (date.getMonth() + 2) + '月'*/
             ajax.get_callback(urls.changeSheetNeedHandle.editView, {}, (realData) => {
                 //日期
                 let yearmonthString = realData.yearmonthString
                 delete realData.yearmonthString
                 //回显数据
                 this.core.setValues({...realData})
-                this.core.setValues({name: yearmonthString + "变动单", yearmonthString: moment(yearmonthString, monthFormat)})
+                this.core.setValues({
+                    name: yearmonthString + "变动单",
+                    yearmonthString: moment(yearmonthString, monthFormat)
+                })
             })
         } else {
             const changeSheetId = this.params.selectedItem.id
@@ -53,12 +60,12 @@ class ChangeSheetNeedHandleForm extends PureComponent {
                 //回显数据
                 this.core.setValues({...realData})
                 this.core.setValue('yearmonthString', moment(yearmonthString, monthFormat))
+                if(this.params.type === AUDITING){
+                    this.core.setGlobalStatus('preview')
+                    this.core.setStatus("annotation",EDIT)
+                }
             })
         }
-        //获取batchModifyData
-        ajax.get_callback(urls.changeSheetNeedHandle.batchModifyData, {}, (realData) => {
-            this.setState({batchModifyData: realData})
-        })
     }
 
 
@@ -85,7 +92,7 @@ class ChangeSheetNeedHandleForm extends PureComponent {
                         <FormItem label='旧部门' name="oldDept"  {...repeaterProps_200} ><Input/></FormItem>
                         <FormItem label='新部门' name="newDept"  {...repeaterProps_200} ><Input/></FormItem>
                         <FormItem label='备注' name="reason"  {...repeaterProps_150} ><Input/></FormItem>
-{/*                        <FormItem label='排序' name="sort" defaultMinWidth={false}
+                        {/*                        <FormItem label='排序' name="sort" defaultMinWidth={false}
                                   style={{width: 70}}><Input/></FormItem>*/}
                     </SelectInlineRepeater>
                 </FormItem>
@@ -134,18 +141,20 @@ class ChangeSheetNeedHandleForm extends PureComponent {
                         <FormItem label='备注' name="reason"  {...repeaterProps_150} ><Input/></FormItem>
                     </SelectInlineRepeater>
                 </FormItem>
-                <Button icon="scan" type="primary" style={{marginLeft:45}}
-                        href={Constants.baseURL  + "/changeSheetFile/otherBonus"}>查看明细数据</Button>
+                <Button icon="scan" type="primary" style={{marginLeft: 45}}
+                        href={Constants.baseURL + "/changeSheetFile/otherBonus"}>查看明细数据</Button>
             </Card>
-            <Card title='备注' className='marginTop' headStyle={fontWeight}>
-                <FormItem name="comment"><Input.TextArea style={{width: 350}}/></FormItem>
-            </Card>
+            {
+                this.params.type !== AUDITING ?
+                    <Card title='备注' className='marginTop' headStyle={fontWeight}>
+                        <FormItem name="comment"><Input.TextArea style={{width: 350}}/></FormItem>
+                    </Card> : ""
+            }
             {
                 this.params.type === AUDITING ?
                     <Card title='批注' className='marginTop' headStyle={fontWeight}>
                         <FormItem name="annotation"><Input.TextArea style={{width: 350}}/></FormItem>
-                    </Card>
-                    : ""
+                    </Card> : ""
             }
         </Form>
     }
