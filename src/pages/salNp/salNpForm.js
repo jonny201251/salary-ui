@@ -34,8 +34,6 @@ class SalNpForm extends PureComponent {
             'userCategory': form_status_disabled,
             'userDeptName': form_status_disabled,
             'finish': form_status_disabled,
-            'shuikuan1': form_status_disabled,
-            'shuikuan2': form_status_disabled,
             'yingfa': form_status_disabled,
             'yingkou': form_status_disabled,
             'jiangjin': form_status_disabled,
@@ -223,21 +221,15 @@ class SalNpForm extends PureComponent {
                     <Col {...fourCol.ColProps}>
                         <FormItem label="医疗保险" name="yiliao" {...fourCol.FormItemProps}><Input/></FormItem>
                     </Col>
-                    {
-                        this.params.type === CREATE ? '' :
-                            <Col {...fourCol.ColProps}>
-                                <FormItem label="站发税款" name="shuikuan1" {...fourCol.FormItemProps}><Input/></FormItem>
-                            </Col>
-                    }
+                    <Col {...fourCol.ColProps}>
+                        <FormItem label="站发税款" name="shuikuan1" {...fourCol.FormItemProps}><Input/></FormItem>
+                    </Col>
                 </Row>
-                {
-                    this.params.type === CREATE ? '' :
-                        <Row gutter={8} className="marginTop">
-                            < Col {...fourCol.ColProps} offset={18}>
-                                <FormItem label="院发税款" name="shuikuan2" {...fourCol.FormItemProps}><Input/></FormItem>
-                            </Col>
-                        </Row>
-                }
+                <Row gutter={8} className="marginTop">
+                    < Col {...fourCol.ColProps} offset={18}>
+                        <FormItem label="院发税款" name="shuikuan2" {...fourCol.FormItemProps}><Input/></FormItem>
+                    </Col>
+                </Row>
             </Card>
             <Card title='计税专用-加项' className='marginTop' headStyle={fontWeight}>
                 <FormItem name="jishui_add_repeater">
