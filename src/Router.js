@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route,Redirect} from 'react-router-dom'
 import App from './App'
 import Admin from './Admin'
 import Dept from './pages/dept'
@@ -34,27 +34,30 @@ class Router extends PureComponent {
             <BrowserRouter>
                 <App>
                     <Switch>
-                        <Route path={Constants.projectName+"/login"} component={Login}/>
-                        <Route path={Constants.projectName+"/"} render={() =>
+                        <Route path={Constants.projectName + "/login"} component={Login}/>
+                        <Route path={Constants.projectName + "/"} render={() =>
                             <Admin>
                                 <Switch>
-                                    <Route path={Constants.projectName+'/dept'} component={Dept}/>
-                                    <Route path={Constants.projectName+'/dic'} component={Dic}/>
-                                    <Route path={Constants.projectName+'/user'} component={User}/>
-                                    <Route path={Constants.projectName+'/salNp'} component={SalNp}/>
-                                    <Route path={Constants.projectName+'/salLtx'} component={SalLtx}/>
-                                    <Route path={Constants.projectName+'/salLx'} component={SalLx}/>
-                                    <Route path={Constants.projectName+'/changeSheet'} component={ChangeSheet}/>
-                                    <Route path={Constants.projectName+'/changeSheetNeedHandle'} component={ChangeSheetNeedHandle}/>
-                                    <Route path={Constants.projectName+'/permission'} component={Permission}/>
-                                    <Route path={Constants.projectName+'/role'} component={Role}/>
-                                    <Route path={Constants.projectName+'/main'} component={Test}/>
-                                    <Route path={Constants.projectName+'/salNpReport'} component={SalNpReport}/>
-                                    <Route path={Constants.projectName+'/salNpSumReport'} component={SalNpSumReport}/>
-                                    <Route path={Constants.projectName+'/salLtxReport'} component={SalLtxReport}/>
-                                    <Route path={Constants.projectName+'/salLtxSumReport'} component={SalLtxSumReport}/>
-                                    <Route path={Constants.projectName+'/salLxReport'} component={SalLxReport}/>
-                                    <Route path={Constants.projectName+'/salLxSumReport'} component={SalLxSumReport}/>
+                                    <Route path={Constants.projectName + '/dept'} component={Dept}/>
+                                    <Route path={Constants.projectName + '/dic'} component={Dic}/>
+                                    <Route path={Constants.projectName + '/user'} component={User}/>
+                                    <Route path={Constants.projectName + '/salNp'} component={SalNp}/>
+                                    <Route path={Constants.projectName + '/salLtx'} component={SalLtx}/>
+                                    <Route path={Constants.projectName + '/salLx'} component={SalLx}/>
+                                    <Route path={Constants.projectName + '/changeSheet'} component={ChangeSheet}/>
+                                    <Route path={Constants.projectName + '/changeSheetNeedHandle'}
+                                           component={ChangeSheetNeedHandle}/>
+                                    <Route path={Constants.projectName + '/permission'} component={Permission}/>
+                                    <Route path={Constants.projectName + '/role'} component={Role}/>
+                                    <Route path={Constants.projectName + '/main'} component={Test}/>
+                                    <Route path={Constants.projectName + '/salNpReport'} component={SalNpReport}/>
+                                    <Route path={Constants.projectName + '/salNpSumReport'} component={SalNpSumReport}/>
+                                    <Route path={Constants.projectName + '/salLtxReport'} component={SalLtxReport}/>
+                                    <Route path={Constants.projectName + '/salLtxSumReport'}
+                                           component={SalLtxSumReport}/>
+                                    <Route path={Constants.projectName + '/salLxReport'} component={SalLxReport}/>
+                                    <Route path={Constants.projectName + '/salLxSumReport'} component={SalLxSumReport}/>
+                                    <Redirect from='/*' to={Constants.projectName + "/login"}/>
                                     }/>
                                 </Switch>
                             </Admin>
