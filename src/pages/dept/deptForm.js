@@ -39,8 +39,8 @@ class DeptForm extends PureComponent {
     render() {
         return <Form core={this.core} layout={Functions.setFormLayout(6, 18)}>
             <FormItem className="hidden" name="id"><Input/></FormItem>
-            <FormItem label="部门名称" name="name"><Input/></FormItem>
-            <FormItem label="上级部门" name="pid"><TreeSelect treeData={this.state.treeSelectData} treeDefaultExpandAll
+            <FormItem label="部门名称" name="name"><Input style={{width: 172}}/></FormItem>
+            <FormItem label="上级部门" name="pid"><TreeSelect style={{width: 172}} treeData={this.state.treeSelectData} treeDefaultExpandAll
                                                           onSelect={(value, node, extra) => {
                                                               this.core.setValue('pname', node.props.title)
                                                           }}/></FormItem>
@@ -48,7 +48,7 @@ class DeptForm extends PureComponent {
             <FormItem label="使用状态" name="status"><RadioGroup options={statusValues}/></FormItem>
             <FormItem label="排序" name="sort" defaultMinWidth={FALSE}
                       layout={Functions.setFormLayout(6, 4)}><Input/></FormItem>
-            <FormItem label="备注" name="comment"><Input.TextArea/></FormItem>
+            <FormItem label="备注" name="comment"><Input.TextArea style={{width: 172}}/></FormItem>
         </Form>
     }
 }

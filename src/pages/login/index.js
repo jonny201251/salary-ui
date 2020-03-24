@@ -76,10 +76,10 @@ class Login extends PureComponent {
                 <Form core={this.core} className="login">
                     <div className="loginText">工资核算系统</div>
                     <div className="content">
-                        <FormItem name="name"><Input autocomplete="off" prefix={<Icon type="user"
+                        <FormItem name="name"><Input style={{width:217}} autocomplete="off" prefix={<Icon type="user"
                                                                                       style={{color: 'rgba(0,0,0,.25)'}}/>}
                                                      placeholder="中文姓名" size='large'/></FormItem>
-                        <FormItem name="pwd"><Input type="password" autocomplete="off" prefix={<Icon type="lock"
+                        <FormItem name="pwd"><Input style={{width:217}} type="password" autocomplete="off" prefix={<Icon type="lock"
                                                                                      style={{color: 'rgba(0,0,0,.25)'}}/>}
                                                     placeholder="身份证号后6位"
                                                     size='large'/></FormItem>

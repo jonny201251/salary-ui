@@ -38,14 +38,14 @@ class PermissionForm extends PureComponent {
     render() {
         return <Form core={this.core} layout={Functions.setFormLayout(6, 18)}>
             <FormItem className="hidden" name="id"><Input/></FormItem>
-            <FormItem label="权限名称" name="name"><Input/></FormItem>
-            <FormItem label="上级权限" name="pid"><TreeSelect treeData={this.state.permissionTreeData}
+            <FormItem label="权限名称" name="name"><Input style={{width: 172}}/></FormItem>
+            <FormItem label="上级权限" name="pid"><TreeSelect style={{width: 172}} treeData={this.state.permissionTreeData}
                                                           onSelect={(value, node, extra) => {
                                                               this.core.setValue('pname', node.props.title)
                                                           }}/></FormItem>
             <FormItem className="hidden" name="pname"><Input/></FormItem>
-            <FormItem label="前端URL" name="url"><Input/></FormItem>
-            <FormItem label="图标" name="icon"><Input/></FormItem>
+            <FormItem label="前端URL" name="url"><Input style={{width: 172}}/></FormItem>
+            <FormItem label="图标" name="icon"><Input style={{width: 172}}/></FormItem>
             <FormItem label="类型" name="type"><RadioGroup options={typeValues}/></FormItem>
             <FormItem label="排序" name="sort" defaultMinWidth={FALSE}
                       layout={Functions.setFormLayout(6, 4)}><Input/></FormItem>

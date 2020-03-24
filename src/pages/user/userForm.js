@@ -59,19 +59,19 @@ class UserForm extends PureComponent {
     render() {
         return <Form core={this.core}>
             <FormItem className="hidden" name="id"><Input/></FormItem>
-            <FormItem className="hidden" label="部门名称" name="deptName"><Input/></FormItem>
+            <FormItem className="hidden" label="部门名称" name="deptName"><Input style={{width: 172}}/></FormItem>
             <Card>
                 <Row gutter={8}>
                     <Col {...ColProps}>
-                        <FormItem label="姓名" name="name" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="姓名" name="name" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                     <Col {...ColProps}>
-                        <FormItem label="密码" name="pwd" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="密码" name="pwd" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                 </Row>
                 <Row gutter={8} className="marginTop">
                     <Col {...ColProps}>
-                        <FormItem label="职工编号" name="num" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="职工编号" name="num" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                     <Col {...ColProps}>
                         <FormItem label="职工类别" name="category" {...FormItemProps}><Select
@@ -89,15 +89,15 @@ class UserForm extends PureComponent {
                                                                                             }}/></FormItem>
                     </Col>
                     <Col {...ColProps}>
-                        <FormItem label="单位名称" name="org" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="单位名称" name="org" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                 </Row>
                 <Row gutter={8} className="marginTop">
                     <Col {...ColProps}>
-                        <FormItem label="身份证号" name="idNum" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="身份证号" name="idNum" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                     <Col {...ColProps}>
-                        <FormItem label="手机" name="mobile" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="手机" name="mobile" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                 </Row>
                 <Row gutter={8} className="marginTop">
@@ -127,7 +127,7 @@ class UserForm extends PureComponent {
                 </Row>*/}
                 <Row gutter={8} className="marginTop">
                     <Col {...ColProps}>
-                        <FormItem label="排序" name="sort" {...FormItemProps}><Input/></FormItem>
+                        <FormItem label="排序" name="sort" {...FormItemProps}><Input style={{width: 172}}/></FormItem>
                     </Col>
                 </Row>
                 <Row gutter={8} className="marginTop">
